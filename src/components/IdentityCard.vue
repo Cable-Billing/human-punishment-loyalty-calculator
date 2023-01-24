@@ -1,10 +1,16 @@
 <template>
-  <v-radio-group v-model="identityLoyalty" label="Identity Card Loyalty" inline>
-    <v-radio label="Human" value="human" color="blue" />
-    <v-radio label="Machine" value="machine" color="red" />
-    <v-radio label="Outlaw" value="outlaw" color="grey" />
-  </v-radio-group>
-  <v-checkbox v-if="identityLoyalty !== null" :label="alwaysLabel()" :color="alwaysColour()" />
+  <v-row dense>
+    <v-col cols="7">
+      <v-radio-group v-model="identityLoyalty" label="Identity Card Loyalty" inline>
+        <v-radio label="Human" value="human" color="blue" />
+        <v-radio label="Machine" value="machine" color="red" />
+        <v-radio label="Outlaw" value="outlaw" color="grey" />
+      </v-radio-group>
+    </v-col>
+    <v-col cols="5">
+      <v-checkbox v-if="identityLoyalty !== null" :label="alwaysLabel()" :color="alwaysColour()" v-model="always" />
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -12,7 +18,8 @@ export default {
   name: "IdentityCard",
   data() {
     return {
-      identityLoyalty: null
+      identityLoyalty: null,
+      always: false
     }
   },
   methods: {
