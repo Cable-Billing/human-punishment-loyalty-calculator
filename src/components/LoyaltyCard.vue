@@ -4,28 +4,19 @@
     <v-radio label="Machine" value="machine" color="red" />
     <v-radio label="Outlaw" value="outlaw" color="grey" />
   </v-radio-group>
-  <v-checkbox v-if="identityLoyalty !== null" :label="alwaysLabel()" :color="alwaysColour()" />
+  <v-checkbox v-if="identityLoyalty !== null" label="X2" :color="identityColour()" />
 </template>
 
 <script>
 export default {
-  name: "Identity",
+  name: "LoyaltyCard",
   data() {
     return {
       identityLoyalty: null
     }
   },
   methods: {
-    alwaysLabel() {
-      if (this.identityLoyalty === "human")
-        return "Always Human";
-      else if (this.identityLoyalty === "machine")
-        return "Always Machine";
-      else if (this.identityLoyalty === "outlaw")
-        return "Always Outlaw";
-      return null;
-    },
-    alwaysColour() {
+    identityColour() {
       if (this.identityLoyalty === "human")
         return "blue";
       else if (this.identityLoyalty === "machine")

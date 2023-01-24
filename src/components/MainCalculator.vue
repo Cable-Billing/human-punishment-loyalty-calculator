@@ -7,24 +7,25 @@
     </v-row>
     <v-row>
       <v-col>
-
+        <LoyaltyCard />
       </v-col>
       <v-col>
-        <Identity />
+        <IdentityCard />
       </v-col>
       <v-col>
-
+        <LoyaltyCard />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import Identity from "@/components/Identity.vue";
+import IdentityCard from "@/components/IdentityCard.vue";
+import LoyaltyCard from "@/components/LoyaltyCard.vue";
 
 export default {
   name: "MainCalculator",
-  components: {Identity}
+  components: {LoyaltyCard, IdentityCard}
 }
 </script>
 
