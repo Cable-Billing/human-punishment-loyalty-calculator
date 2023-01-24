@@ -3,7 +3,9 @@ import MainCalculator from "@/components/MainCalculator.vue";
 </script>
 
 <template>
-  <MainCalculator />
+  <v-container>
+    <MainCalculator />
+  </v-container>
 </template>
 
 <style scoped>
