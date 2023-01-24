@@ -7,13 +7,13 @@
     </v-row>
     <v-row>
       <v-col>
-        <LoyaltyCard />
+        <LoyaltyCard @selection-changed="leftLoyaltyChanged" />
       </v-col>
       <v-col>
-        <IdentityCard />
+        <IdentityCard @selection-changed="identityChanged" />
       </v-col>
       <v-col>
-        <LoyaltyCard />
+        <LoyaltyCard @selection-changed="rightLoyaltyChanged" />
       </v-col>
     </v-row>
   </v-container>
@@ -25,7 +25,18 @@ import LoyaltyCard from "@/components/LoyaltyCard.vue";
 
 export default {
   name: "MainCalculator",
-  components: {LoyaltyCard, IdentityCard}
+  components: {LoyaltyCard, IdentityCard},
+  methods: {
+    identityChanged(params) {
+      console.log(params);
+    },
+    leftLoyaltyChanged(params) {
+      console.log(params);
+    },
+    rightLoyaltyChanged(params) {
+      console.log(params);
+    }
+  }
 }
 </script>
 

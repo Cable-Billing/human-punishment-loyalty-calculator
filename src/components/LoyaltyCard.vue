@@ -31,6 +31,17 @@ export default {
       else if (this.identityLoyalty === "outlaw")
         return "grey";
       return null;
+    },
+    selectionChanged() {
+      this.$emit("selection-changed", [this.identityLoyalty, this.x2]);
+    }
+  },
+  watch: {
+    identityLoyalty() {
+      this.selectionChanged();
+    },
+    x2() {
+      this.selectionChanged();
     }
   }
 }
