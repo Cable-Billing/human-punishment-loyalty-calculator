@@ -1,0 +1,14 @@
+services:
+  webserver:
+    container_name: web-server
+    restart: no
+    build:
+      context: .
+      dockerfile: web-server/Dockerfile
+    networks:
+      - internal-network
+    ports:
+      - "8080:80"
+
+networks:
+  internal-network:
