@@ -1,0 +1,25 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Compose-Deployment" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+    <deployment type="docker-compose.yml">
+      <settings>
+        <option name="envFilePath" value="" />
+        <option name="removeOrphansOnComposeDown" value="false" />
+        <option name="commandLineOptions" value="--build" />
+        <option name="sourceFilePath" value="compose.yml" />
+        <option name="upAlwaysRecreate" value="true" />
+        <option name="upRemoveOrphans" value="true" />
+      </settings>
+    </deployment>
+    <method v="2">
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/app/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="build" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+    </method>
+  </configuration>
+</component>

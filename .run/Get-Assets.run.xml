@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Get-Assets" type="NodeJSConfigurationType" path-to-js-file="get-assests.js" working-dir="$PROJECT_DIR$/asset-acquisition">
+    <method v="2" />
+  </configuration>
+</component>
