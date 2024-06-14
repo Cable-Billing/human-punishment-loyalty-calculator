@@ -6,7 +6,7 @@ let r = readline.createInterface({ input: fs.createReadStream('./urls.txt') });
 let i = '1';
 
 r.on('line', function(text) {
-    const file = fs.createWriteStream(i + '.png');
+    const file = fs.createWriteStream('./downloaded/' + i + '.png');
     i++;
 
     const request = http.get(text, function(response) {
