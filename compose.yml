@@ -1,7 +1,7 @@
 services:
   webserver:
     container_name: web-server
-    restart: no
+    restart: unless-stopped
     build:
       context: .
       dockerfile: web-server/Dockerfile

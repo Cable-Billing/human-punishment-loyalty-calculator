@@ -1,4 +1,5 @@
 FROM node:lts as node-build
+RUN rm -fr /app
 WORKDIR /app
 COPY ../app/package*.json ./
 RUN npm install
@@ -15,6 +16,7 @@ RUN rm -fr /etc/nginx/conf.d/default.conf
 COPY ../web-server/nginx.conf /etc/nginx/nginx.conf
 
 # Vue App
+RUN rm -fr /usr/share/nginx/app
 COPY --from=node-build /app/dist /usr/share/nginx/app
 
 # API
