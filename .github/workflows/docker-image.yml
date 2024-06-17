@@ -14,4 +14,4 @@ jobs:
     - name: Build
       run: docker compose -f compose.yml -p human-punishment-loyalty-calculator up --always-recreate-deps --remove-orphans -d --build
     - name: Test
-      run: docker run --network container:human-punishment-loyalty-calculator appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8080/
+      run: docker run --network container:web-server appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8080/
