@@ -1,4 +1,4 @@
-FROM node:lts as node-build
+FROM node:20.14.0-alpine as node-build
 RUN rm -fr /app
 WORKDIR /app
 COPY ../app/package*.json ./
@@ -6,7 +6,7 @@ RUN npm install
 COPY ../app ./
 RUN npm run build
 
-FROM nginx:stable-alpine as nginx-setup
+FROM nginx:1.26.1-alpine as nginx-setup
 
 # Remove the detault Nginx site
 RUN rm -fr /usr/share/nginx/html
