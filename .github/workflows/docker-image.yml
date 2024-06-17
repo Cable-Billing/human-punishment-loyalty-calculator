@@ -12,4 +12,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker compose -f .\compose.yml -p human-punishment-loyalty-calculator up --always-recreate-deps --remove-orphans -d --build
+      run: docker compose -f compose.yml -p human-punishment-loyalty-calculator up --always-recreate-deps --remove-orphans -d --build
