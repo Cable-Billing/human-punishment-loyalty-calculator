@@ -1,1 +1,2 @@
-nginx.conf
+**/node_modules
+**/dist
