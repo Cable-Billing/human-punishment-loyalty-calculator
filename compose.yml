@@ -8,7 +8,18 @@ services:
     networks:
       - internal-network
     ports:
-      - "8080:80"
+      - "8081:80"
+
+  python-api:
+    container_name: python-api
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    networks:
+      - internal-network
+    ports:
+      - "8082:8000"
 
 networks:
   internal-network:
