@@ -4,17 +4,15 @@ from os import listdir
 
 def migration_initialise(connection):
     cursor = connection.cursor()
-    print('Checking if \'migration_history\' tables exists...')
     cursor.execute("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'migration_history');")
     row = cursor.fetchone()
 
     if row[0]:
-        print('\'migration_history\' table exists, nothing to do')
+        print('Table \'migration_history\': exists')
     else:
-        print('\'migration_history\' table does not exist, creating...')
         cursor.execute('CREATE TABLE migration_history (migration_number CHARACTER(12), migrated_timestamp TIMESTAMP WITH TIME ZONE);')
         connection.commit()
-        print('\'migration_history\' table created')
+        print('Table \'migration_history\': created')
 
     cursor.close()
 
@@ -32,8 +30,11 @@ def migrate(connection):
             file = open(f'./migrations/{file_name}')
             cursor.execute(file.read())
             cursor.execute("INSERT INTO migration_history(migration_number, migrated_timestamp) VALUES (%(migration_number)s, NOW())", {'migration_number': migration_number})
+            connection.commit()
+            print(f'Migration \'{migration_number}\': ran')
+        else:
+            print(f'Migration \'{migration_number}\': already run')
 
-    connection.commit()
     cursor.close()
 
 
