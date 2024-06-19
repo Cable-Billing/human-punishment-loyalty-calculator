@@ -1,29 +1,10 @@
-# human-punishment-loyalty-calculator
+![image](https://cf.geekdo-images.com/3vOdrN4dDxNP7gjZgoWGdQ__opengraph/img/rFcAZ6ihwNWnalSo-o4wwLty-lU=/0x0:4500x2363/fit-in/1200x630/filters:strip_icc()/pic3662950.jpg)
 
-This template should help get you started developing with Vue 3 in Vite.
+# Loyalty Calculator
 
-## Recommended IDE Setup
+This was created for the game Human Punishment.
+Some friends have a hard time working out their layalty in the game so this was a project to create a mobile web app to help them.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+It also doubles as me learning Docker.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+# Software Requirements
