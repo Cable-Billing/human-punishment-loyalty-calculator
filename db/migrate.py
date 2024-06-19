@@ -13,7 +13,7 @@ def migration_initialise():
         print('\'migration_history\' table exists, nothing to do')
     else:
         print('\'migration_history\' table does not exist, creating...')
-        cursor.execute("CREATE TABLE migration_history (migration_number INT, migrated_timestamp TIMESTAMP WITH TIME ZONE);")
+        cursor.execute("CREATE TABLE migration_history (migration_number CHARACTER(12), migrated_timestamp TIMESTAMP WITH TIME ZONE);")
         connection.commit()
         print('\'migration_history\' table created')
 
