@@ -20,5 +20,15 @@ services:
     ports:
       - "8082:80"
 
+  postgres-db:
+    container_name: postgres-db
+    restart: unless-stopped
+    build:
+      context: ./db
+    networks:
+      - internal-network
+    ports:
+      - "5432:5432"
+
 networks:
   internal-network:
