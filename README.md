@@ -1,29 +1,24 @@
-# human-punishment-loyalty-calculator
+![image](https://cf.geekdo-images.com/3vOdrN4dDxNP7gjZgoWGdQ__opengraph/img/rFcAZ6ihwNWnalSo-o4wwLty-lU=/0x0:4500x2363/fit-in/1200x630/filters:strip_icc()/pic3662950.jpg)
 
-This template should help get you started developing with Vue 3 in Vite.
+# Loyalty Calculator
 
-## Recommended IDE Setup
+This was created for the game Human Punishment.
+Some friends have a hard time working out their layalty in the game so this was a project to create a mobile web app to help them.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+It also doubles as me learning Docker.
 
-## Customize configuration
+# Development Software Requirements
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Docker (that is pretty much it, unless you want to run the individual parts separately, but it isn't designed for that)
 
-## Project Setup
+# How to Run
 
-```sh
-npm install
+In the project there is a `Compose-Deployment` run configuration for those who use JetBrains IDEs. However, you can always run the command manually.
+
+```bash
+docker compose -f compose.yml -p human-punishment-loyalty-calculator up --always-recreate-deps --remove-orphans -d --build
 ```
 
-### Compile and Hot-Reload for Development
+# Database Migrations
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+The database migration files are to be stored in `./db/migrations/` and need to be in the format of `yyyyMMddHHmm.sql`.
