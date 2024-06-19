@@ -7,4 +7,18 @@ Some friends have a hard time working out their layalty in the game so this was 
 
 It also doubles as me learning Docker.
 
-# Software Requirements
+# Development Software Requirements
+
+- Docker (that is pretty much it, unless you want to run the individual parts separately, but it isn't designed for that)
+
+# How to Run
+
+In the project there is a `Compose-Deployment` run configuration for those who use JetBrains IDEs. However, you can always run the command manually.
+
+```bash
+docker compose -f compose.yml -p human-punishment-loyalty-calculator up --always-recreate-deps --remove-orphans -d --build
+```
+
+# Database Migrations
+
+The database migration files are to be stored in `./db/migrations/` and need to be in the format of `yyyyMMddHHmm.sql`.
