@@ -4,4 +4,4 @@ WORKDIR /db
 COPY ./ ./
 RUN pip install --no-cache-dir --upgrade -r /db/requirements.txt
 
-ENTRYPOINT ["python", "/db/initialise.py"]
+ENTRYPOINT ["python", "/db/migrate.py"]
