@@ -8,7 +8,7 @@ def migration_initialise(connection):
     cursor.execute("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'migration_history');")
     row = cursor.fetchone()
 
-    if row and row[0]:
+    if row[0]:
         print('\'migration_history\' table exists, nothing to do')
     else:
         print('\'migration_history\' table does not exist, creating...')
@@ -28,9 +28,12 @@ def migrate(connection):
         cursor.execute("SELECT COUNT(*) FROM migration_history WHERE migration_number = %(migration_number)s", {'migration_number': migration_number})
         row = cursor.fetchone()
 
-        if row and row[0] == 0:
-            print()
+        if row[0] == 0:
+            file = open(f'./migrations/{file_name}')
+            cursor.execute(file.read())
+            cursor.execute("INSERT INTO migration_history(migration_number, migrated_timestamp) VALUES (%(migration_number)s, NOW())", {'migration_number': migration_number})
 
+    connection.commit()
     cursor.close()
 
 
