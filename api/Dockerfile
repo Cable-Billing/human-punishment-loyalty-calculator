@@ -1,9 +1,8 @@
 FROM python:3.12-alpine as python-api
 RUN rm -fr /api
 WORKDIR /api
-COPY ../api ./
-RUN pip install fastapi
-RUN pip install uvicorn
-#RUN python -m uvicorn api.main:app
+COPY ./requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /api/requirements.txt
+COPY ./ ./
 
-CMD ["python", "-m", "uvicorn", "main:app"]
+CMD ["fastapi", "run", "main.py", "--port", "80"]

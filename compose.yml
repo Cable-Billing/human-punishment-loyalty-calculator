@@ -1,10 +1,10 @@
 services:
-  webserver:
-    container_name: web-server
+  nginx-web-server:
+    container_name: nginx-web-server
     restart: unless-stopped
     build:
-      context: .
-      dockerfile: web-server/Dockerfile
+      context: ./ # Need the context out of the /web-server directory because we need access to the /app directory
+      dockerfile: ./web-server/Dockerfile
     networks:
       - internal-network
     ports:
@@ -14,12 +14,11 @@ services:
     container_name: python-api
     restart: unless-stopped
     build:
-      context: .
-      dockerfile: api/Dockerfile
+      context: ./api
     networks:
       - internal-network
     ports:
-      - "8082:8000"
+      - "8082:80"
 
 networks:
   internal-network:
