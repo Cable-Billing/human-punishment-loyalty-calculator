@@ -1,6 +1,8 @@
 services:
   nginx-web-server:
     container_name: nginx-web-server
+    depends_on:
+      - python-api
     restart: unless-stopped
     build:
       context: ./ # Need the context out of the /web-server directory because we need access to the /app directory
@@ -12,6 +14,8 @@ services:
 
   python-api:
     container_name: python-api
+    depends_on:
+      - python-db-migrator
     restart: unless-stopped
     build:
       context: ./api
@@ -19,6 +23,29 @@ services:
       - internal-network
     ports:
       - "8082:80"
+
+  postgres-db:
+    container_name: postgres-db
+    image: postgres:16.3-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: hp_data
+    restart: unless-stopped
+    networks:
+      - internal-network
+    ports:
+      - "5432:5432"
+
+  python-db-migrator:
+    container_name: python-db-migrator
+    depends_on:
+      - postgres-db
+    restart: no
+    build:
+      context: ./db
+    networks:
+      - internal-network
 
 networks:
   internal-network:
