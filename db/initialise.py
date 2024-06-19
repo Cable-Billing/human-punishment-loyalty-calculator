@@ -3,7 +3,7 @@ import psycopg2
 
 def main():
     print('Initialising hp_data Database')
-    connection = psycopg2.connect(user="root", password="root", host="localhost", port="5432", database="hp_data")
+    connection = psycopg2.connect(user="root", password="root", host="postgres-db", port="5432", database="hp_data")
     print('Connection opened')
 
     cursor = connection.cursor()

@@ -1,4 +1,7 @@
-FROM postgres:16.3-alpine
-ENV POSTGRES_USER root
-ENV POSTGRES_PASSWORD root
-ENV POSTGRES_DB hp_data
+FROM python:3.12 as python-db-migrator
+RUN rm -fr /db
+WORKDIR /db
+COPY ./ ./
+RUN pip install --no-cache-dir --upgrade -r /db/requirements.txt
+
+ENTRYPOINT ["python", "/db/initialise.py"]
