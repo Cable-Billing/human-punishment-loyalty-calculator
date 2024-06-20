@@ -5,8 +5,7 @@ services:
       - python-api
     restart: unless-stopped
     build:
-      context: ./ # Need the context out of the /web-server directory because we need access to the /app directory
-      dockerfile: ./web-server/Dockerfile
+      context: ./app
     networks:
       - internal-network
     ports:
