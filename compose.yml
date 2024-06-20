@@ -9,7 +9,7 @@ services:
     networks:
       - internal-network
     ports:
-      - "8081:80"
+      - "80:80"
 
   python-api:
     container_name: python-api
