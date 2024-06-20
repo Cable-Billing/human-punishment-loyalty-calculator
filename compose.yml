@@ -53,7 +53,7 @@ services:
     container_name: python-db-migrator
     depends_on:
       - postgres-db
-    restart: no
+    restart: on-failure
     build:
       context: ./db
     networks:
