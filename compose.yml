@@ -1,6 +1,7 @@
 services:
   nginx-web-server:
     container_name: nginx-web-server
+    image: nginx:1.26.1-alpine
     depends_on:
       - python-api
     restart: unless-stopped
@@ -13,6 +14,7 @@ services:
 
   python-api:
     container_name: python-api
+    image: python:3.12-alpine
     depends_on:
       - python-db-migrator
     restart: unless-stopped
@@ -36,6 +38,7 @@ services:
 
   python-db-migrator:
     container_name: python-db-migrator
+    image: python:3.12
     depends_on:
       - postgres-db
     restart: no
