@@ -11,6 +11,11 @@ services:
       - internal-network
     ports:
       - "80:80"
+    healthcheck:
+      test: curl --fail http://nginx-web-server
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   python-api:
     container_name: python-api
@@ -22,6 +27,11 @@ services:
       context: ./api
     networks:
       - internal-network
+    healthcheck:
+      test: curl --fail http://python-api
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   postgres-db:
     container_name: postgres-db
@@ -35,6 +45,11 @@ services:
       - internal-network
     ports:
       - "5432:5432"
+    healthcheck:
+      test: pg_isready -d hp_data -U root
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   python-db-migrator:
     container_name: python-db-migrator
