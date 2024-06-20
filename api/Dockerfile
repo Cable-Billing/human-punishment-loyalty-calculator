@@ -5,4 +5,4 @@ COPY ./requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /api/requirements.txt
 COPY ./ ./
 
-CMD ["fastapi", "run", "main.py", "--port", "80"]
+ENTRYPOINT ["fastapi", "run", "main.py", "--port", "80"]
