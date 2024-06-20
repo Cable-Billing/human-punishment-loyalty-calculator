@@ -1,4 +1,4 @@
-import psycopg2
+import pg8000
 from os import listdir
 
 
@@ -39,7 +39,7 @@ def migrate(connection):
 
 
 def main():
-    connection = psycopg2.connect(user='root', password='root', host='postgres-db', port='5432', database='hp_data')
+    connection = pg8000.connect(user='root', password='root', host='postgres-db', port='5432', database='hp_data')
     migration_initialise(connection)
     migrate(connection)
     connection.close()

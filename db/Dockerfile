@@ -1,4 +1,4 @@
-FROM python:3.12 as python-db-migrator
+FROM python:3.12-alpine as python-db-migrator
 RUN rm -fr /db
 WORKDIR /db
 COPY ./ ./
