@@ -7,13 +7,19 @@
     </v-row>
     <v-row>
       <v-col>
-        <LoyaltyCard @selection-changed="leftLoyaltyChanged" />
+        <LoyaltyCard
+            v-model:loyalty="loyaltyLeft"
+            v-model:x2="x2Left"/>
       </v-col>
       <v-col>
-        <IdentityCard @selection-changed="identityChanged" />
+        <IdentityCard
+            v-model:identity="identity"
+            v-model:always="always"/>
       </v-col>
       <v-col>
-        <LoyaltyCard @selection-changed="rightLoyaltyChanged" />
+        <LoyaltyCard
+            v-model:loyalty="loyaltyRight"
+            v-model:x2="x2Right"/>
       </v-col>
     </v-row>
   </v-container>
@@ -25,21 +31,19 @@ import LoyaltyCard from "@/components/LoyaltyCard.vue";
 
 export default {
   name: "MainCalculator",
-  components: {LoyaltyCard, IdentityCard},
-  methods: {
-    identityChanged(params) {
-      console.log(params);
-    },
-    leftLoyaltyChanged(params) {
-      console.log(params);
-    },
-    rightLoyaltyChanged(params) {
-      console.log(params);
+  components: {
+    LoyaltyCard,
+    IdentityCard
+  },
+  data() {
+    return {
+      loyaltyLeft: null,
+      x2Left: false,
+      identity: null,
+      always: false,
+      loyaltyRight: null,
+      x2Right: false
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>

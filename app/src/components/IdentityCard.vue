@@ -1,14 +1,23 @@
 <template>
   <v-row dense>
     <v-col cols="7">
-      <v-radio-group v-model="identityLoyalty" label="Identity Card Loyalty" inline>
-        <v-radio label="Human" value="human" color="blue" />
-        <v-radio label="Machine" value="machine" color="red" />
-        <v-radio label="Outlaw" value="outlaw" color="grey" />
+      <v-radio-group
+          label="Identity Card Loyalty"
+          inline
+          :value="identity"
+          @input="$emit('update:identity', $event.target.value)">
+        <v-radio label="Human" value="human" color="blue"/>
+        <v-radio label="Machine" value="machine" color="red"/>
+        <v-radio label="Outlaw" value="outlaw" color="grey"/>
       </v-radio-group>
     </v-col>
     <v-col cols="5">
-      <v-checkbox v-if="identityLoyalty !== null" :label="alwaysLabel()" :color="alwaysColour()" v-model="always" />
+      <v-checkbox
+          v-if="identity !== null"
+          :label="alwaysLabel"
+          :color="alwaysColour"
+          :value="always"
+          @input="$emit('update:always', $event.target.value)"/>
     </v-col>
   </v-row>
 </template>
@@ -16,46 +25,39 @@
 <script>
 export default {
   name: "IdentityCard",
-  data() {
-    return {
-      identityLoyalty: null,
-      always: false
+  props: {
+    identity: {
+      type: String,
+      required: true
+    },
+    always: {
+      type: Boolean,
+      required: true
     }
   },
-  methods: {
+  computed: {
     alwaysLabel() {
-      if (this.identityLoyalty === "human")
-        return "Always Human";
-      else if (this.identityLoyalty === "machine")
-        return "Always Machine";
-      else if (this.identityLoyalty === "outlaw")
-        return "Always Outlaw";
+      switch (this.identity) {
+        case "human":
+          return "Always Human";
+        case "machine":
+          return "Always Machine";
+        case "outlaw":
+          return "Always Outlaw";
+      }
       return null;
     },
     alwaysColour() {
-      if (this.identityLoyalty === "human")
-        return "blue";
-      else if (this.identityLoyalty === "machine")
-        return "red";
-      else if (this.identityLoyalty === "outlaw")
-        return "grey";
+      switch (this.identity) {
+        case "human":
+          return "blue";
+        case "machine":
+          return "red";
+        case "outlaw":
+          return "grey";
+      }
       return null;
-    },
-    selectionChanged() {
-      this.$emit("selection-changed", [this.identityLoyalty, this.always]);
-    }
-  },
-  watch: {
-    identityLoyalty() {
-      this.selectionChanged();
-    },
-    always() {
-      this.selectionChanged();
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
