@@ -9,7 +9,6 @@ def migration_initialise(connection):
         print('Table \'migration_history\': exists')
     else:
         connection.run('CREATE TABLE migration_history (migration_number CHARACTER(12), migrated_timestamp TIMESTAMP WITH TIME ZONE)')
-        connection.commit()
         print('Table \'migration_history\': created')
 
 
@@ -26,15 +25,20 @@ def migrate(connection):
             file = open(f'./migrations/{file_name}')
             connection.run(file.read())
             connection.run("INSERT INTO migration_history(migration_number, migrated_timestamp) VALUES (:migration_number, NOW())", migration_number=migration_number)
-            connection.commit()
             print(f'Migration \'{migration_number}\': ran')
 
 
 def main():
     connection = pg8000.connect(user='root', password='root', host='postgres-db', port='5432', database='hp_data')
-    migration_initialise(connection)
-    migrate(connection)
-    connection.close()
+
+    try:
+        migration_initialise(connection)
+        migrate(connection)
+        connection.commit()
+    except:
+        connection.rollback()
+    finally:
+        connection.close()
 
 
 if __name__ == '__main__':
