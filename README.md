@@ -3,7 +3,9 @@
 # Loyalty Calculator
 
 This was created for the game Human Punishment.
-Some friends have a hard time working out their layalty in the game so this was a project to create a mobile web app to help them.
+Some friends have a hard time working out their loyalty in the game so this was a project to create a mobile web app to help them.
+
+[Human Punishment: Social Deduction 2.0 Rulebook](https://cdn.1j1ju.com/medias/68/0b/3c-human-punishment-social-deduction-2-0-rulebook.pdf)
 
 It also doubles as me learning Docker.
 
